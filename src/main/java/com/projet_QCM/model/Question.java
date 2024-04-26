@@ -1,4 +1,4 @@
-package com.projet_QCM;
+package com.projet_QCM.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

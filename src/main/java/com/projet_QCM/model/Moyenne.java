@@ -1,10 +1,9 @@
-package com.projet_QCM;
+package com.projet_QCM.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +14,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class OptionQuiz {
+public class Moyenne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_option;
-    private String text_option;
-    private boolean est_correct;
+    private Long id_moyenne;
+    private double moyenne;
 }

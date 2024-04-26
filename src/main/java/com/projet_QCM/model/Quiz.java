@@ -1,4 +1,4 @@
-package com.projet_QCM.modele;
+package com.projet_QCM.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
