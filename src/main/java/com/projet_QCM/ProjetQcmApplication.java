@@ -1,4 +1,4 @@
-package com.projet_QCM.model;
+package com.projet_QCM;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
