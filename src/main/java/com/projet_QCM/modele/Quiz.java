@@ -1,6 +1,7 @@
 package com.projet_QCM.modele;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ public class Quiz {
     private long id;
 
     @Column
+    @NotBlank
     private String titre;
 
     @Column
@@ -28,8 +30,8 @@ public class Quiz {
     private LocalDate date_expiration;
 
     @ManyToOne
-    @JoinColumn(name = "object_id")
-    private Object object;
+    @JoinColumn(name = "user_id")
+    private Object user;
 
 
 
