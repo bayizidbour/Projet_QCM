@@ -6,9 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.*;
 
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Reponse {
 
 	@Id
@@ -16,10 +21,14 @@ public class Reponse {
 	private Integer id_reponse;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_quiz")
-	private Object quiz;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_option")
-	private Object opt_Quiz;
+	@JoinColumn(name = "optQuiz_id")
+	private OptionQuiz optQuiz;
+
+	@Override
+	public String toString() {
+		return "Reponse{" +
+				"id_reponse=" + id_reponse +
+				", opt_Quiz=" + optQuiz +
+				'}';
+	}
 }

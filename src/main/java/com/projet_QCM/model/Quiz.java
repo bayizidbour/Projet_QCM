@@ -8,11 +8,11 @@ import lombok.ToString;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@ToString
 public class Quiz {
 
     @Id
@@ -24,7 +24,7 @@ public class Quiz {
     private String titre;
 
     @Column
-    private LocalDate duree;
+    private int duree;
 
     @Column
     private LocalDate date_creation= LocalDate.now();
@@ -35,13 +35,29 @@ public class Quiz {
     @Column
     private LocalDate date_expiration;
 
+
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Object user;
+    private User user;
+
+    @OneToMany(mappedBy = "quiz")
+    private List<Question> questionList;
 
 
 
 
 
-
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", duree=" + duree +
+                ", date_creation=" + date_creation +
+                ", date_debut=" + date_debut +
+                ", date_expiration=" + date_expiration +
+                ", user=" + user +
+                ", questionList=" + questionList +
+                '}';
+    }
 }

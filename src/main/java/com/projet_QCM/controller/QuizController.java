@@ -23,7 +23,7 @@ public class QuizController {
         return "";
     }
 
-    @GetMapping("/")
+    @GetMapping("/inserer")
     public String insererQuiz(@Valid Quiz quiz, BindingResult result, Model model){
 
         model.addAttribute("quiz", new Quiz());

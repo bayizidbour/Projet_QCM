@@ -1,9 +1,6 @@
 package com.projet_QCM.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +15,10 @@ public class Moyenne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_moyenne;
+
     private double moyenne;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
