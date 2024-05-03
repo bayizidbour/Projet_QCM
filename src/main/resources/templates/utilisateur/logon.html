@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+
+    <th:block th:insert="~{_commun :: header}"></th:block>
+<body>
+<main class="container-fluid">
+    <h2 class="text-center">Connexion</h2>
+
+    <form th:action="@{/logon}" method="post" th:object="${user}">
+
+        <div class="row">
+
+            <div class="col-6 form-group">
+                <label>Login</label>
+                <input type="text" name="login" class="form-control" th:field="*{login}"/>
+            </div>
+            <div class="col-6 form-group">
+                <label>Password</label>
+                <input type="password" name="mdp" class="form-control" th:field="*{mdp}" />
+            </div>
+        </div>
+
+        <div class="col-6">
+            <input type="submit" class="btn btn-success mt-4" />
+        </div>
+
+    </form>
+
+</main>
+
+
+    <th:block th:insert="~{_commun :: footer}"></th:block>
+</body>
+</html>

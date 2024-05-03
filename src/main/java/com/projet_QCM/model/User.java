@@ -53,7 +53,6 @@ public class User {
                 ", statut='" + statut + '\'' +
                 ", login='" + login + '\'' +
                 ", mdp='" + mdp + '\'' +
-                ", moyenneList=" + moyenneList +
                 '}';
     }
 }

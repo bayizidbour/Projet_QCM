@@ -1,11 +1,8 @@
 @charset "ISO-8859-1";
-body{
-background-color: #00ffff;
-}
+
 .trois{
 	margin-left: 900px;
 }
 main{
 	height: 100vh;
-	background-color: red;
 }
