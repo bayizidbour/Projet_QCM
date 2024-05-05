@@ -20,8 +20,8 @@ public class Question {
 
     private String libelle;
 
-    @Enumerated(EnumType.STRING)
-    private TypeQuestion typeQuestion;
+    
+    private String typeQuestion;
 
     private double point;
 

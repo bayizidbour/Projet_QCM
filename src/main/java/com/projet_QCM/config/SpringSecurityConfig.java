@@ -19,8 +19,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SpringSecurityConfig {
 
-	@Autowired
-	ServiceUserDetails details;
+//	@Autowired
+//	ServiceUserDetails details;
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -37,24 +37,24 @@ public class SpringSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
-	protected AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder encode)
-			throws Exception {
-		AuthenticationManagerBuilder authenticationManagerBuilder = http
-				.getSharedObject(AuthenticationManagerBuilder.class);
-		authenticationManagerBuilder.userDetailsService(details).passwordEncoder(encode);
-		return authenticationManagerBuilder.build();
-	}
-
 //	@Bean
-//	UserDetailsService users() {
-//		UserDetails user = User.builder().username("user").password(passwordEncoder().encode("user")).roles("USER")
-//				.build();
-//
-//		UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("admin"))
-//				.roles("USER", "ADMIN").build();
-//
-//		return new InMemoryUserDetailsManager(user, admin);
+//	protected AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder encode)
+//			throws Exception {
+//		AuthenticationManagerBuilder authenticationManagerBuilder = http
+//				.getSharedObject(AuthenticationManagerBuilder.class);
+//		authenticationManagerBuilder.userDetailsService(details).passwordEncoder(encode);
+//		return authenticationManagerBuilder.build();
 //	}
+
+	@Bean
+	UserDetailsService users() {
+		UserDetails user = User.builder().username("user").password(passwordEncoder().encode("user")).roles("USER")
+				.build();
+
+		UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("admin"))
+				.roles("USER", "ADMIN").build();
+
+		return new InMemoryUserDetailsManager(user, admin);
+	}
 
 }

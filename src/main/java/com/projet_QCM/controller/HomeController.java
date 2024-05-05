@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.projet_QCM.model.Question;
+import com.projet_QCM.model.TypeQuestion;
 import com.projet_QCM.model.User;
 import com.projet_QCM.repository.UserRepository;
+
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -36,6 +40,12 @@ public class HomeController {
     @GetMapping("/admin")
     public String admin() {
         return "utilisateur/admin";
+    }
+    @GetMapping("/question/add")
+    public String addQuestion( Model model) {
+    	model.addAttribute("question", new Question());
+    	model.addAttribute("type", TypeQuestion.class);
+    	return "question/index";
     }
 
     @GetMapping("/logon")

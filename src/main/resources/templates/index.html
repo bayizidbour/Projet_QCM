@@ -7,15 +7,46 @@
 
 <body>
 
-    <th:block th:insert="~{_commun :: header}"></th:block>
+	<th:block th:insert="~{_commun :: header}"></th:block>
 
-    <main class="container-fluid">
+	<main class="container-fluid">
 
-        <h1>Hello World</h1>
+		<div class="d-flex p-3" style=" align-items: center; margin-left: auto; margin-right: auto;" >
 
-    </main>
+			<div class=" mx-1  text-center" style="width: 60%">
+				<p class="quiz" >QuiZ</p>
+				<span><em>Our quiz plateform</em></span>
+			</div>
+			<div class="card mx-1"  style="width: 40%">
+				<div class="card-body p-4">
 
-    <th:block th:insert="~{_commun :: footer}"></th:block>
+					<form>
+						<div class="mb-2">
+							
+							<input type="text" class="form-control" id="" placeholder="Veillez entrer votre login ">						
+						</div>
+						<div class="mb-2">
+							
+							<input type="password" class="form-control" placeholder="Veillez entrer votre mot de passe ">
+						</div>
+						
+						<button type="submit" class="btn btn-primary form-control mb-2">Se connecter</button>
+					</form>
+					<p>Vous n'avez pas de compte? <a th:href="@{/logon}">Creer un compte</a></p>
+				</div>
+
+			</div>
+
+
+
+
+
+
+		</div>
+
+	</main>
+
+	<th:block th:insert="~{_commun :: footer}"></th:block>
 
 </body>
 </html>
