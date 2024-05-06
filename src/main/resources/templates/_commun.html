@@ -76,7 +76,7 @@ text-decoration: none;}
 								Gestion questions</button>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" th:href="@{/question/add}">Ajouter question</a></li>
-								<li><a class="dropdown-item" href="#">Liste des questions</a></li>
+								<li><a class="dropdown-item" th:href="@{/question/list}">Liste des questions</a></li>
 							</ul>
 						</div>
 					</li>
@@ -86,9 +86,9 @@ text-decoration: none;}
 								data-bs-toggle="dropdown" aria-expanded="false">
 								Gestion Quiz</button>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Creer quiz</a></li>
-								<li><a class="dropdown-item" href="#">Option quiz</a></li>
-								<li><a class="dropdown-item" href="#">List quiz</a></li>
+								<li><a class="dropdown-item" th:href="@{/quiz/add}">Creer quiz</a></li>
+								<li><a class="dropdown-item" th:href="@{/optionQuiz/add}">Option quiz</a></li>
+								<li><a class="dropdown-item" th:href="@{/quiz/list}">List quiz</a></li>
 							</ul>
 						</div>
 					</li>

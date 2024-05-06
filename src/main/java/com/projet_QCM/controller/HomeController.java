@@ -32,6 +32,8 @@ public class HomeController {
         return "utilisateur/everyOne";
     }
     
+   
+    
     @GetMapping("/user")
     public String user() {
         return "utilisateur/user";
@@ -41,12 +43,7 @@ public class HomeController {
     public String admin() {
         return "utilisateur/admin";
     }
-    @GetMapping("/question/add")
-    public String addQuestion( Model model) {
-    	model.addAttribute("question", new Question());
-    	model.addAttribute("type", TypeQuestion.class);
-    	return "question/index";
-    }
+
 
     @GetMapping("/logon")
     public String logon(Model model) {

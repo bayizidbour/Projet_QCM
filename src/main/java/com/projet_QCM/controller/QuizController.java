@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,13 +23,20 @@ public class QuizController {
 
     public final QuizServiceImpl quizService;
 
-    @GetMapping("/")
-    public String getAllQuiz(Quiz quiz, Model model){
+    @GetMapping("/list")
+    public String getAllQuiz(Model model){
         model.addAttribute("quizs",quizService.getAll());
-        return "";
+        return "quiz/list";
     }
+    @GetMapping("/add")
+    public String addQuiz(Model model){
+    	model.addAttribute("quiz", new Quiz());
+        return "quiz/index";
+    }
+    
+    
 
-    @GetMapping("/inserer")
+    @PostMapping("/inserer")
     public String insererQuiz(@Valid Quiz quiz, BindingResult result, Model model){
 
         model.addAttribute("quiz", new Quiz());
