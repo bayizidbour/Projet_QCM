@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+
+<th:block th:insert="~{_commun :: head}"></th:block>
+
+
+
+<body>
+
+	<th:block th:insert="~{_commun :: header}"></th:block>
+
+	<main class="container-fluid">
+		<h1>Confirm Quiz</h1>
+		<div class="p-4" style="width: 100%; margin: auto;">
+			
+			<form th:action="@{/user/quiz}">
+				<div class="card p-4">
+				<h3>Type QUiz</h3>
+					<div class="card p-4 text-center" style="background-color: #EDEEF0;">
+						<div>
+							<h1>Liste Question/Reponse</h1>
+						</div>
+
+						<div class="mt-2">
+							<button type="submit" class="btn btn-primary">Modifier Reponses</button>
+						</div>
+
+					</div>
+					<div class="mt-2 text-center">
+						<button type="submit" class="btn btn-success">Confirm soumission</button>
+					</div>
+				</div>
+			</form>
+
+
+		</div>
+
+	</main>
+
+	<th:block th:insert="~{_commun :: footer}"></th:block>
+
+</body>
+</html>

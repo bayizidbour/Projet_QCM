@@ -9,7 +9,7 @@ import com.projet_QCM.model.OptionQuiz;
 
 
 @Controller
-@RequestMapping("/optionQuiz")
+@RequestMapping("/admin/optionQuiz")
 public class OptionQuizController {
 	
 	

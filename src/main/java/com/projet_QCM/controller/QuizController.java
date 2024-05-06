@@ -18,34 +18,62 @@ import lombok.AllArgsConstructor;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/quiz")
 public class QuizController {
 
     public final QuizServiceImpl quizService;
 
-    @GetMapping("/list")
+    // Afficher la liste des quiz
+    
+    @GetMapping("/admin/quiz/list")
     public String getAllQuiz(Model model){
         model.addAttribute("quizs",quizService.getAll());
         return "quiz/list";
     }
-    @GetMapping("/add")
+    
+    // Ajouter un quiz
+   
+    @GetMapping("/admin/quiz/add")
     public String addQuiz(Model model){
     	model.addAttribute("quiz", new Quiz());
         return "quiz/index";
     }
     
+    //Afficher les quiz à passer
     
-
-    @PostMapping("/inserer")
-    public String insererQuiz(@Valid Quiz quiz, BindingResult result, Model model){
-
-        model.addAttribute("quiz", new Quiz());
-        if ( result.hasErrors() ) {
-            return "";
-        }
-        quizService.create(quiz);
-        return "";
+    @GetMapping("/user/quiz/done")
+    public String doneQuiz(Model model){   	
+        return "eleve/index";
     }
+    
+    // Soumettre quiz
+    @GetMapping("/user/quiz/done/examen")
+    public String examenQuiz(Model model){   	
+        return "eleve/examen";
+    }
+    
+    // Confirmer soumission Quiz
+    @GetMapping("/user/quiz/done/examen/confirm")
+    public String confirmationQuiz(Model model){   	
+    	return "eleve/confirm";
+    }
+    
+    // Afficher note QUiz
+   
+    @GetMapping("/user/quiz")
+    public String insererQuiz(Model model){
+        return "eleve/note";
+    }
+    
+    //Consulter Moyenne Quiz
+    
+    @GetMapping("/user/quiz/moyenne")
+    public String moyenneQUiz(Model model){
+        return "eleve/moyenne";
+    }
+    
+    
+    
+    // --------------------------------------------
     @GetMapping("/{id}")
     public String getById(@PathVariable long id){
         quizService.getById(id);

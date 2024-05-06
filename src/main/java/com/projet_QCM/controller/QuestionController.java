@@ -9,7 +9,7 @@ import com.projet_QCM.model.Question;
 import com.projet_QCM.model.TypeQuestion;
 
 @Controller
-@RequestMapping("/question")
+@RequestMapping("/admin/question")
 public class QuestionController {
 	
     @GetMapping("/add")

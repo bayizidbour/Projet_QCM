@@ -29,12 +29,12 @@ public class User {
     private String         email;
     
     @Column( length = 20 )
-    private String         statut;
+    private String         statut="ELEVE";
     
     @Column( length = 8 )
     private String         login;
     
-    @Column( length = 20 )
+    @Column( length = 100 )
     private String         mdp;
 
     @OneToMany(mappedBy = "user")

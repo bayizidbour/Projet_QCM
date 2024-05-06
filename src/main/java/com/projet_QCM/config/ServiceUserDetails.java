@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.projet_QCM.repository.UserRepository;
 
-//@Service
+@Service
 public class ServiceUserDetails implements UserDetailsService{
 	
 	@Autowired

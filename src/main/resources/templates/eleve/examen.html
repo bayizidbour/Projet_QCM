@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+
+<th:block th:insert="~{_commun :: head}"></th:block>
+
+
+
+<body>
+
+	<th:block th:insert="~{_commun :: header}"></th:block>
+
+	<main class="container-fluid">
+		<h1>Examen</h1>
+		<div class="p-4 mt-5" style="width: 100%; margin: auto;">
+			<form th:action="@{/user/quiz/done/examen/confirm}">
+				<p class="libelle">Libelle Question</p>
+				<div class="card p-4 text-white" style="background-color: #869CB2;">
+					<div class="mb-3"></div>
+					<div>
+
+						<div class="form-check">
+							<input class="form-check-input" type="radio"
+								name="flexRadioDefault" id="flexRadioDefault1"> <label
+								class="form-check-label" for="flexRadioDefault1"> Option
+								1 </label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio"
+								name="flexRadioDefault" id="flexRadioDefault1"> <label
+								class="form-check-label" for="flexRadioDefault1"> Option
+								2 </label>
+						</div>
+
+					</div>
+				</div>
+				<div class="mt-2">
+					<button type="submit" class="btn btn-success">Soumettre Quiz</button>
+				</div>
+			</form>
+
+
+		</div>
+
+	</main>
+
+	<th:block th:insert="~{_commun :: footer}"></th:block>
+
+</body>
+</html>
