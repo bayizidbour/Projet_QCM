@@ -15,12 +15,12 @@ public class OptionQuizController {
 	
 	 @GetMapping("/list")
 	    public String option(){	      
-	        return "quiz/list";
+	        return "optionQuiz/list";
 	    }
 	    @GetMapping("/add")
 	    public String addQuiz(Model model){
 	    	model.addAttribute("option", new OptionQuiz());
-	        return "quiz/index";
+	        return "optionQuiz/index";
 	    }
 	
 	
