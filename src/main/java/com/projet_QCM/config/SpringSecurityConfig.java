@@ -14,10 +14,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig {
+	
+	private final String [] END_POINTS = {"/", "/logon", "/login", "/login/failure"};
 
 	@Autowired
 	ServiceUserDetails details;
@@ -25,11 +28,16 @@ public class SpringSecurityConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		return http.authorizeHttpRequests(auth -> {
-			auth.requestMatchers("/", "/logon").permitAll();
+			auth.requestMatchers(END_POINTS).permitAll();
 			auth.requestMatchers("/admin/**").hasRole("ADMIN");
 			auth.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN");
 			auth.anyRequest().authenticated();
-		}).formLogin(Customizer.withDefaults()).build();
+		})
+				.formLogin(form -> form
+						.loginPage("/login")
+						.successHandler(new SimpleUrlAuthenticationSuccessHandler("/"))
+						.failureForwardUrl("/login/failure"))
+				.build();
 	}
 
 	@Bean
