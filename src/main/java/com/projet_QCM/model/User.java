@@ -29,7 +29,7 @@ public class User {
     private String         email;
     
     @Column( length = 20 )
-    private String         statut="ELEVE";
+    private String         statut="ADMIN";
     
     @Column( length = 8 )
     private String         login;

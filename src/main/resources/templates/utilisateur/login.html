@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="https://www.thymeleaf.org">
+
+<th:block th:insert="~{_commun :: head}"></th:block>
+
 <body>
 
-<main class="container-fluid">
-    <h2 class="text-center">Connexion</h2>
+	<th:block th:insert="~{_commun :: header}"></th:block>
+	<main class="container-fluid">
+		<h2 class="text-center">Connexion</h2>
 
-    <form th:action="" method="post">
+		<div th:if="${param.error}" class="alert alert-danger text-center h4">Login ou password iincorrects</div>
 
-        <div class="row">
+		<form th:action="@{/login}" method="post">
 
-            <div class="col-6 form-group">
-                <label>Login</label>
-                <input type="text" name="login" class="form-control" />
-            </div>
-            <div class="col-6 form-group">
-                <label>Password</label>
-                <input type="password" name="mdp" class="form-control" />
-            </div>
-        </div>
+			<div class="row">
 
-        <div class="col-6">
-            <input type="submit" class="btn btn-success mt-4" />
-        </div>
+				<div class="col-6 form-group">
+					<label>Login</label> <input value="ilci" type="text" name="username"
+						class="form-control" />
+				</div>
+				<div class="col-6 form-group">
+					<label>Password</label> <input value="ilci" type="password" name="password"
+						class="form-control" />
+				</div>
+			</div>
 
-    </form>
+			<div class="col-6">
+				<input type="submit" class="btn btn-success mt-4" />
+			</div>
 
-</main>
+		</form>
 
+	</main>
+
+	<th:block th:insert="~{_commun :: footer}"></th:block>
 
 </body>
 </html>

@@ -14,16 +14,24 @@
 			<table class="table mt-3">
 				<thead>
 					<tr>
-						<th scope="col">id</th>
-						<th scope="col">Titre</th>
-						<th scope="col">Date debut</th>
-						<th scope="col">Date expiration</th>
-						<th scope="col">Action</th>
+						<th>id</th>
+						<th>Titre</th>
+						<th>Date debut</th>
+						<th>Date expiration</th>
+						<th>Action</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						
+				<tbody>  
+					<tr th:each = "quiz: ${quizs}">
+						<td th:text="${quiz.Id}"></td>
+						<td th:text="${quiz.titre}"></td>
+						<td th:text="${quiz.date_debut}"></td>
+						<td th:text="${quiz.date_expiration}"></td>
+						<td>
+							<a th:href="@{/quiz/update/admin/__${quiz.id}__}"><i class="fa-solid fa-pen"></i></a>
+							- 
+							<a th:href="@{/quiz/delete/admin/__${quiz.id}__}"><i class="fa-solid fa-trash"></i></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
