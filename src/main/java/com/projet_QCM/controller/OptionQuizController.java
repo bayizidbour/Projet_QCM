@@ -26,9 +26,11 @@ public class OptionQuizController {
 	
 	
 	@GetMapping("/list")
-	public String option() {
+	public String option(Model model) {
+		model.addAttribute("options",optionQuizServiceImpl.getAll());
 		return "optionQuiz/list";
 	}
+
 
 	@PostMapping
 	public String inser(@Valid OptionQuiz option, BindingResult result, Model model) {

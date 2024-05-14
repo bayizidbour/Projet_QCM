@@ -3,7 +3,9 @@ package com.projet_QCM.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -44,8 +46,17 @@ public class QuestionController {
     }
     
     @GetMapping("/list")
-    public String questionList() {
+    public String questionList(Model model) {
+    	model.addAttribute("questions", questionServiceImpl.getAll());
         return "question/list";
     }
+    
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+    	System.out.println(id);
+    		questionServiceImpl.delete(id);
+    	return "redirect: question/list";
+    }
+    
 
 }
