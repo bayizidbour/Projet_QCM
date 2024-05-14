@@ -28,7 +28,7 @@ public class QuestionServiceImpl implements  OjectService<Question> {
 	}
 
 	@Override
-	public Question getById(long id) {	
+	public Question getById(Long id) {	
 		return this.questionRepository.findById(id).orElseThrow(()->new RuntimeException("Pas de quiz trouvée"));
 	}
 
@@ -38,12 +38,16 @@ public class QuestionServiceImpl implements  OjectService<Question> {
 		
 	}
 	@Override
-	public Question update(Question qUp, long id) {
+	public Question update(Question qUp, Long id) {
 		Question qBD=getById(id);
 			qBD.setLibelle(qUp.getLibelle());
 			qBD.setPoint(qUp.getPoint());
 			
 		return create(qBD);
+	}
+	
+	public Question getByLibelle(String l) {
+		return this.questionRepository.findByLibelle(l);
 	}
 
 }

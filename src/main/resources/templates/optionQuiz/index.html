@@ -23,11 +23,16 @@
 					</div>
 					<div class=" form-group mb-2">
 
-						<select class="form-select" th:field="*{question}"aria-label="Default select example">
-							<option th:each="question : ${questions}" th:value="${question.id_question}" th:text="${question.libelle}"></option>							
+						<select class="form-select" th:field="*{question}"aria-label="Default select example" hidden="true">
+							<option th:value="${session.questionObject.id_question}" th:text="${session.questionObject.libelle}"></option>							
 						</select>
 					</div>
 
+					<div class="form-group mb-2">
+						<select class="form-select" name="nbreOpt" aria-label="Default select example" hidden="true">
+							<option  th:value="${session.questionObject.nbreOption}" th:text="${session.questionObject.nbreOption}"></option>							
+						</select>
+					</div>
 				</div>
 
 				<div class=" form-group">

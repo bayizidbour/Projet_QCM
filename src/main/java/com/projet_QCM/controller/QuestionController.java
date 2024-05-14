@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.projet_QCM.model.OptionQuiz;
 import com.projet_QCM.model.Question;
 import com.projet_QCM.model.TypeQuestion;
 import com.projet_QCM.service.QuestionServiceImpl;
 import com.projet_QCM.service.QuizServiceImpl;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -25,8 +27,7 @@ public class QuestionController {
 	
 	public final QuestionServiceImpl questionServiceImpl;
 	public final QuizServiceImpl quizServiceImpl;
-	
-	
+
     @GetMapping("/add")
     public String addQuestion( Model model) {
     	model.addAttribute("question", new Question());
@@ -36,13 +37,21 @@ public class QuestionController {
     	return "question/index";
     }
     @PostMapping
-    public String inser(@Valid Question question, BindingResult result,Model model) {
+    public String inser(@Valid Question question, BindingResult result,Model model, HttpSession session) {
     	 
     	if ( result.hasErrors() ) {
              return "question/index";
-         }    	
+         } 
+    	
     	questionServiceImpl.create(question);
-    	return "redirect:/";
+    	
+    	if(question!=null) {		
+    		String libelle=question.getLibelle();
+        	model.addAttribute("option", new OptionQuiz());
+        	session.setAttribute("questionObject",questionServiceImpl.getByLibelle(libelle) );
+    	}
+	
+    	return "optionQuiz/index";
     }
     
     @GetMapping("/list")

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.projet_QCM.model.OptionQuiz;
-import com.projet_QCM.model.Question;
 import com.projet_QCM.repository.OptionQuizRepository;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +26,7 @@ public class OptionQuizServiceImpl implements OjectService<OptionQuiz> {
 	}
 
 	@Override
-	public OptionQuiz getById(long id) {
+	public OptionQuiz getById(Long id) {
 		
 		return this.optionQuizRepository.findById(id).orElseThrow(()->new RuntimeException("Pas d'option quiz trouvée"));
 	}
@@ -39,12 +38,16 @@ public class OptionQuizServiceImpl implements OjectService<OptionQuiz> {
 	}
 
 	@Override
-	public OptionQuiz update(OptionQuiz opUp, long id) {
+	public OptionQuiz update(OptionQuiz opUp, Long id) {
 		OptionQuiz opBD=getById(id);
 			opBD.setEst_correct(opUp.isEst_correct());
 			opBD.setText_option(opUp.getText_option());
 			opBD.setQuestion(opUp.getQuestion());			
 		return create(opBD);
+	}
+	
+	public Long nbreOption(Long id) {
+		return optionQuizRepository.nbreOption(id);
 	}
 
 }
