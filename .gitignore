@@ -35,3 +35,6 @@ build/
 .vscode/
 
 src/main/resources/application.properties
+READMEs.md
+doneetest.sql
+

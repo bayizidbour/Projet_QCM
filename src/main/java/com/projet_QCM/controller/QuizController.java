@@ -1,8 +1,12 @@
 package com.projet_QCM.controller;
 
+import com.projet_QCM.model.Faire;
+import com.projet_QCM.model.User;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +19,8 @@ import com.projet_QCM.service.QuizServiceImpl;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -67,7 +73,15 @@ public class QuizController {
     //Consulter Moyenne Quiz
     
     @GetMapping("/user/quiz/moyenne")
-    public String moyenneQUiz(Model model){
+    public String moyenneQUiz(Model model, Authentication auth){
+        //Récupérer l'utilisateur connecté
+        User user = this.quizService.findUserByLogin(auth.getName());
+        //Récupérer les notes
+        List<Faire> faire = user.getFaires();
+        //calculler et afficher sa moyenne
+        double moyenne =  this.quizService.calculMoyenneByIdUser(user.getId());
+        model.addAttribute("moyenne",moyenne);
+        model.addAttribute("faires",faire);
         return "eleve/moyenne";
     }
     

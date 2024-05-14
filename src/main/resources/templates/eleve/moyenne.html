@@ -8,32 +8,25 @@
 
 
 		<div class=" card p-4 mt-5" style="width: 60%; margin: auto">
-			<h2 class="">Moyenne</h2>
+			<h2 class="">Votre Moyenne Générale</h2>
 			<hr />
 		
 			<table class="table mt-3 table-dark table-striped-columns">
-				<thead>
-					<tr>
-						<th scope="col">Type Quiz</th>						
-						<th scope="col">note</th>						
-						<th scope="col"></th>						
-					</tr>
-				</thead>
 				<tbody>
 					<tr>
-						<td>Java</td>
-						<td>10</td>
+						<th>Type Quiz</th>
+						<td th:each="faire : ${faires} " th:text="${faire.getQuiz().getTitre()}" ></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td>Php</td>
-						<td>15</td>
+						<th>List des notes</th>
+						<td  th:each="faire : ${faires} " th:text="${faire.getNote()}" ></td>
 						<td></td>
 					</tr>
 					<tr class="">
 						<td>Moyenne General</td>
-						<td></td>
-						<td>15</td>
+						<td th:each="faire : ${faires} "></td>
+						<td th:text="${moyenne}"/>
 					</tr>
 				</tbody>
 			</table>

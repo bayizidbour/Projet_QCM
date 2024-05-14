@@ -29,7 +29,7 @@ public class User {
     private String         email;
     
     @Column( length = 20 )
-    private String         statut="ELEVE";
+    private String         statut="USER"; //ELEVE ?????
     
     @Column( length = 8 )
     private String         login;
@@ -41,7 +41,7 @@ public class User {
     private List<Moyenne> moyenneList;
 
     @OneToMany(mappedBy = "user")
-    private List<Quiz> quizList;
+    private List<Faire> faires;
 
     @Override
     public String toString() {
