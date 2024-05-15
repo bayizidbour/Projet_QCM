@@ -33,7 +33,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column( length = 20 )
 
-    private String         statut="USER"; //ELEVE ?????
+    //private String  statut="USER";
+    private Statut statut;//ELEVE ?????
     
     @Column( length = 8, unique= true, nullable = false)
     private String         login;
