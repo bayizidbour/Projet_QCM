@@ -28,6 +28,15 @@
 						<input type="password"  class="form-control" th:field="*{mdp}"  placeholder="Veillez entrer votre mot de passe "/>
 					</div>
 				</div>
+				<div class="mb-3 form-check">
+			    <input type="radio" class="form-check-input" th:field="*{statut}" id="admin" value="ADMIN" name="statut">
+			    <label class="form-check-label" for="admin">Admin</label>
+			  </div>
+			  <div class="mb-3 form-check">
+			    <input type="radio" class="form-check-input" th:field="*{statut}" id="eleve" value="USER" name="statut">
+			    <label class="form-check-label" for="eleve">Eleve</label>
+			  </div>
+				
 
 				<div class=" form-group">
 					<button type="submit" class="btn btn-success form-control">S'inscrire</button>

@@ -9,6 +9,8 @@ import lombok.Setter;
 
 import java.util.List;
 
+import com.projet_QCM.enums.Statut;
+
 @Entity
 @Getter
 @Setter
@@ -28,10 +30,11 @@ public class User {
     @Column( length = 20 )
     private String         email;
     
+    @Enumerated(EnumType.STRING)
     @Column( length = 20 )
-    private String         statut="ELEVE";
+    private Statut         statut;
     
-    @Column( length = 8 )
+    @Column( length = 8, unique= true, nullable = false)
     private String         login;
     
     @Column( length = 100 )

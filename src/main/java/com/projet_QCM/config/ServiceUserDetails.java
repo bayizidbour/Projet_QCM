@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.projet_QCM.enums.Statut;
 import com.projet_QCM.repository.UserRepository;
 
 @Service
@@ -29,7 +30,7 @@ public class ServiceUserDetails implements UserDetailsService{
 		return us;
 	}
 	
-	private ArrayList<GrantedAuthority> grantedAuthorities(String role){
+	private ArrayList<GrantedAuthority> grantedAuthorities(Statut role){
 		ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 		
 		authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
