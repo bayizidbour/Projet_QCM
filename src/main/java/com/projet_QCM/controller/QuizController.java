@@ -1,6 +1,7 @@
 package com.projet_QCM.controller;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -112,10 +113,16 @@ public class QuizController {
 		return "";
 	}
 
-	@PutMapping("/quiz/update/admin/{id}")
-	public String update(Quiz quiz, @PathVariable long id) {
-		quizService.delete(id);
-		return "";
+	@GetMapping("/quiz/update/admin/{id}")
+	public String update(Model model, @PathVariable long id, RedirectAttributes ra) {
+		Optional<Quiz> quiz = quizService.getQuizById(id);
+		
+		if(quiz.isPresent()) {
+			model.addAttribute("quiz", quiz.get());
+			model.addAttribute("date_now", LocalDate.now());
+			return "quiz/index";
+		}
+	return "redirect:/admin/quiz/inserer";
 	}
 
 }
