@@ -17,11 +17,14 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_question;
-
+    
+    @Column(unique =true)
     private String libelle;
 
     
     private String typeQuestion;
+    
+    private int nbreOption;
 
     private double point;
 
@@ -31,5 +34,12 @@ public class Question {
 
     @OneToMany(mappedBy = "question")
     private List<OptionQuiz> optionQuizList;
+
+	@Override
+	public String toString() {
+		return "Question = id_question=" + id_question + ", libelle=" + libelle + ", typeQuestion=" + typeQuestion;
+	}
+    
+    
 
 }

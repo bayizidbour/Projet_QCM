@@ -41,13 +41,15 @@ public class QuizController {
     //Afficher les quiz à passer
     
     @GetMapping("/user/quiz/done")
-    public String doneQuiz(Model model){   	
+    public String doneQuiz(Model model){ 
+    	model.addAttribute("quizs", quizService.getAll());
         return "eleve/index";
     }
     
     // Soumettre quiz
-    @GetMapping("/user/quiz/done/examen")
-    public String examenQuiz(Model model){   	
+    @GetMapping("/user/quiz/done/examen/{id}")
+    public String examenQuiz(Model model,@PathVariable Long id){  
+    	
         return "eleve/examen";
     }
     
@@ -75,19 +77,19 @@ public class QuizController {
     
     // --------------------------------------------
     @GetMapping("/{id}")
-    public String getById(@PathVariable long id){
+    public String getById(@PathVariable Long id){
         quizService.getById(id);
         return "";
     }
 
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable long id) {
+    public String delete(@PathVariable Long id) {
         quizService.delete(id);
         return "";
     }
 
     @PutMapping("/update/{id}")
-    public String update(Quiz quiz, @PathVariable long id){
+    public String update(Quiz quiz, @PathVariable Long id){
         quizService.delete(id);
         return "";
     }

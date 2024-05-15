@@ -8,9 +8,10 @@ import java.util.List;
 public interface OjectService<T> {
     T create(T t);
     List<T>getAll();
-    T getById(long id);
+    T getById(Long id);
     void delete(Long id);
-    T update(T t, long id);
+    T update(T t, Long id);
+    
 
 
 }

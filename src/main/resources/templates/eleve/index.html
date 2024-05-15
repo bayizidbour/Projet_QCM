@@ -11,17 +11,18 @@
 
 	<main class="container-fluid">
 		<h1>Eleve Index</h1>
-		<div class="p-4 mt-5" style="width: 100%; margin: auto;">
+		<div class="p-4 mt-5" th:each="quiz:${quizs}" style="width: 100%; margin: auto;">
 			<div class="card" style="width: 18rem; border-radius: 15px">
 				<div class="card-body text-center">
+					<span th:text="${quiz.id}"></span>
 					<h5 class="card-title">Quiz</h5>
 					<hr style="margin: 0; padding: 0" />
-					<p class="card-text">Titre</p>
-					<p class="card-text">Durée</p>
-					<p class="card-text">Date debut</p>
-					<p class="card-text">Date expiration</p>
+					<p class="card-text" >Titre: <span th:text="${quiz.titre}"></span></p>
+					<p class="card-text" th:text="${quiz.duree}">Durée</p>
+					<p class="card-text" th:text="${quiz.date_debut}">Date debut</p>
+					<p class="card-text" th:text="${quiz.date_expiration}">Date expiration</p>
 					<hr style="margin: 0; padding: 0" />
-					<a th:href="@{/user/quiz/done/examen}" class="btn btn-success mt-2">Faire Quiz</a>
+					<a th:href="@{/user/quiz/done/examen/__${quiz.id}__}" class="btn btn-success mt-2">Faire Quiz</a>
 				</div>
 			</div>
 

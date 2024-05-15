@@ -17,11 +17,19 @@
 						<th scope="col">Libelle Question</th>
 						<th scope="col">Type Question</th>
 						<th scope="col">Nombre de point</th>
+						<th scope="col">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr th:each="question: ${questions}">
+						<td th:text="${question.id_question}"></td>
+						<td th:text="${question.libelle}"></td>
+						<td th:text="${question.typeQuestion}"></td>
+						<td th:text="${question.point}"></td>
 						
+						<td><a href="">Update</a>
+							<a th:href="@{/admin/question/delete/__${question.id_question}__}">Delete</a></td>
+
 					</tr>
 				</tbody>
 			</table>
