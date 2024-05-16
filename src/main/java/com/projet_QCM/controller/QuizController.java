@@ -66,7 +66,7 @@ public class QuizController {
         return "eleve/note";
     }
     
-    //Consulter Moyenne Quiz
+    //Consulter Moyenne Quiz à faire
     
     @GetMapping("/user/quiz/moyenne")
     public String moyenneQUiz(Model model){
