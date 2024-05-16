@@ -32,9 +32,13 @@ public class User {
     
     @Enumerated(EnumType.STRING)
     @Column( length = 20 )
+<<<<<<< HEAD
 
     //private String  statut="USER";
     private Statut statut;//ELEVE ?????
+=======
+    private String         statut="ADMIN";
+>>>>>>> bayizid
     
     @Column( length = 8, unique= true, nullable = false)
     private String         login;

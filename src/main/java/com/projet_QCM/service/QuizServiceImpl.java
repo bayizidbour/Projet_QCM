@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -31,8 +32,13 @@ public class QuizServiceImpl  implements OjectService<Quiz>{
     }
 
     @Override
+<<<<<<< HEAD
     public Quiz getById(Long id) {
         return this.quizRepository.findById(id).orElseThrow(()->new RuntimeException("Pas de quiz trouvée"));
+=======
+    public Quiz  getById(Long id) {
+        return quizRepository.findById(id).orElseThrow(()->new RuntimeException("Pas de quiz trouvée"));
+>>>>>>> bayizid
     }
 
     @Override
@@ -41,16 +47,29 @@ public class QuizServiceImpl  implements OjectService<Quiz>{
 
     }
 
+    public Optional<Quiz> getQuizById(Long id){
+    	return quizRepository.findById(id);
+    }
+   
     @Override
     public Quiz update(Quiz quizUp,Long id) {
+<<<<<<< HEAD
         Quiz quizBD=getById(id);
+=======
+    	
+    	
+       Quiz  quizBD=getById(id);
+>>>>>>> bayizid
             quizBD.setTitre(quizUp.getTitre());
             quizBD.setDuree(quizUp.getDuree());
            // quizBD.setUser(quizUp.getUser());
             quizBD.setDate_debut(quizUp.getDate_debut());
             quizBD.setDate_creation(quizUp.getDate_creation());
             quizBD.setDate_expiration(quizUp.getDate_expiration());
-        return create(quizBD);
+            
+          
+        return create(quizBD);	
+    	
     }
 
 

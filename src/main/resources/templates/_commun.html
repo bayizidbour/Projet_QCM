@@ -27,9 +27,13 @@
 	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 	crossorigin="anonymous"></script>
 
-
+ 
 <title>Projet Quiz</title>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bayizid
 <style>
 *{
 margin: 0;
@@ -49,7 +53,7 @@ font-size: 20px;
 margin: 0px;
 }
 main{
-height: 57vh;
+height: 100vh;
 
 
 }
@@ -96,7 +100,11 @@ font-size: 30px;
 				<ul class="navbar-nav">
 					<th:block sec:authorize="isAuthenticated()">
 					
+<<<<<<< HEAD
 					<th:block sec:authorize="hasRole('ROLE_ADMIN')"
+=======
+					<th:block sec:authorize="hasRole('ROLE_ADMIN')">
+>>>>>>> bayizid
 					<li class="nav-item">
 						<div class="dropdown mx-1">
 							<button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -157,12 +165,20 @@ font-size: 30px;
 	</header>
 
 	<th:block th:fragment="footer">
+	
 		<footer class=" p-4 mt-5 text-center text-light" style="background-color:#4677A9">
+<<<<<<< HEAD
 			&copy; - ILCI - B3
 			
 			
 			
 			 </footer>
+=======
+		
+			&copy; - ILCI - B3 
+		
+	</footer>
+>>>>>>> bayizid
 	</th:block>
 
 </body>

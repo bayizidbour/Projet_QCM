@@ -11,7 +11,10 @@ public interface OjectService<T> {
     T getById(Long id);
     void delete(Long id);
     T update(T t, Long id);
+<<<<<<< HEAD
     
+=======
+>>>>>>> bayizid
 
 
 }
