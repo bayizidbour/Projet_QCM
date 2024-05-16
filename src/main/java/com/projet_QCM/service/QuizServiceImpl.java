@@ -27,7 +27,7 @@ public class QuizServiceImpl  implements OjectService<Quiz>{
     }
 
     @Override
-    public Quiz  getById(long id) {
+    public Quiz  getById(Long id) {
         return quizRepository.findById(id).orElseThrow(()->new RuntimeException("Pas de quiz trouvée"));
     }
 
@@ -37,17 +37,15 @@ public class QuizServiceImpl  implements OjectService<Quiz>{
 
     }
 
-    public Optional<Quiz> getQuizById(long id){
+    public Optional<Quiz> getQuizById(Long id){
     	return quizRepository.findById(id);
     }
    
     @Override
-    public Quiz update(Quiz quizUp,long id) {
-    	Optional<Quiz> optQuiz = quizRepository.findById(id);
+    public Quiz update(Quiz quizUp,Long id) {
     	
-    	if(optQuiz.isPresent()) {
-    	Quiz quizBD = optQuiz.get();
-//        Quiz quizBD=getById(id);
+    	
+       Quiz  quizBD=getById(id);
             quizBD.setTitre(quizUp.getTitre());
             quizBD.setDuree(quizUp.getDuree());
             quizBD.setUser(quizUp.getUser());
@@ -55,10 +53,9 @@ public class QuizServiceImpl  implements OjectService<Quiz>{
             quizBD.setDate_creation(quizUp.getDate_creation());
             quizBD.setDate_expiration(quizUp.getDate_expiration());
             
-          return quizRepository.save(quizBD);
-//        return create(quizBD);	
-    	}
-    	return null;
+          
+        return create(quizBD);	
+    	
     }
 
 

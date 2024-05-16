@@ -14,7 +14,7 @@
 			<table class="table mt-3">
 				<thead>
 					<tr>
-						<th>id</th>
+						<th>Id</th>
 						<th>Titre</th>
 						<th>Date debut</th>
 						<th>Date expiration</th>
@@ -23,7 +23,7 @@
 				</thead>
 				<tbody>  
 					<tr th:each = "quiz: ${quizs}">
-						<td th:text="${quiz.Id}"></td>
+						<td th:text="${quiz.id}"></td>
 						<td th:text="${quiz.titre}"></td>
 						<td th:text="${quiz.date_debut}"></td>
 						<td th:text="${quiz.date_expiration}"></td>

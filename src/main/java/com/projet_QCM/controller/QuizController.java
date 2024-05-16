@@ -52,16 +52,32 @@ public class QuizController {
 				return "quiz/index";
 			}
 			
-			if(quiz.getId() != 0) {
+			if(quiz.getId() != null) {
+				System.out.println("update ok");
 				quizService.update(quiz, quiz.getId());
 				ra.addFlashAttribute("success", "Le quiz est modifié avec success");
 			}else {
+				System.out.println("update Non ok");
 				quizService.create(quiz);
 				ra.addFlashAttribute("success", "Le quiz est ajouté avec success");
 			}
 			return "redirect:/admin/quiz/list";
 		}
 
+//		// Créer et ajouter un quiz dans la base de donnée
+//				@PostMapping("/admin/quiz/update")
+//				public String updateQuiz(@Valid Quiz quiz, BindingResult result, RedirectAttributes ra) {
+//					
+//					if(result.hasErrors()) {
+//						return "quiz/index";
+//					}
+//					
+//					if(quiz.getId() != 0) {
+//						quizService.update(quiz, quiz.getId());
+//						ra.addFlashAttribute("success", "Le quiz est modifié avec success");
+//					}
+//					return "redirect:/admin/quiz/list";
+//				}
 	// Afficher les quiz à passer
 
 	@GetMapping("/user/quiz/done")
@@ -102,27 +118,29 @@ public class QuizController {
 
 	// --------------------------------------------
 	@GetMapping("/{id}")
-	public String getById(@PathVariable long id) {
+	public String getById(@PathVariable Long id) {
 		quizService.getById(id);
 		return "";
 	}
 
-	@DeleteMapping("/quiz/delete/admin/{id}")
-	public String delete(@PathVariable long id) {
+	@GetMapping("/quiz/delete/admin/{id}")
+	public String delete(@PathVariable Long id) {
 		quizService.delete(id);
-		return "";
+		return "redirect:/admin/quiz/list";
 	}
 
 	@GetMapping("/quiz/update/admin/{id}")
-	public String update(Model model, @PathVariable long id, RedirectAttributes ra) {
-		Optional<Quiz> quiz = quizService.getQuizById(id);
+	public String update(Model model, @PathVariable Long id, RedirectAttributes ra) {
+		Optional<Quiz> qz = quizService.getQuizById(id);
 		
-		if(quiz.isPresent()) {
-			model.addAttribute("quiz", quiz.get());
+		if(qz.isPresent()) {
+			model.addAttribute("quiz", qz.get());
 			model.addAttribute("date_now", LocalDate.now());
 			return "quiz/index";
 		}
-	return "redirect:/admin/quiz/inserer";
+			
+		return "redirect:/admin/quiz/list";
+	
 	}
 
 }
