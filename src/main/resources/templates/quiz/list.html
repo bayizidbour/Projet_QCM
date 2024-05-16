@@ -10,7 +10,7 @@
 		<div class=" card p-4 mt-5" style="width: 60%; margin: auto">
 			<h2 class="">List quiz</h2>
 			<hr />
-			<a class="btn btn-success" th:href="@{/quiz/add}" >Add quiz</a>
+			<a class="btn btn-success" th:href="@{/admin/quiz/add}" >Add quiz</a>
 			<table class="table mt-3">
 				<thead>
 					<tr>
@@ -22,8 +22,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						
+					<tr th:each = "quiz: ${quizs}">
+						<td th:text="${quiz.id}"></td>
+						<td th:text="${quiz.titre}"></td>
+						<td th:text="${quiz.date_debut}"></td>
+						<td th:text="${quiz.date_expiration}"></td>
+						<td>
+							<a th:href="@{/quiz/update/admin/__${quiz.id}__}"><i class="fa-solid fa-pen"></i></a>
+							- 
+							<a th:href="@{/quiz/delete/admin/__${quiz.id}__}"><i class="fa-solid fa-trash"></i></a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

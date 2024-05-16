@@ -8,12 +8,19 @@
 
 
 		<div class=" card p-4 mt-5" style="width: 30%; margin: auto">
-			<h2 class="">Add quiz</h2>
-			<form th:object="${quiz}">
+			<h2 class="">Add quiz [[${date_now}]]</h2>
+			<form th:action="@{/admin/quiz/inserer}" method="post"
+				th:object="${quiz}">
+
 
 				<div class="">
+
 					<div class=" form-group mb-2">
-						<input type="text" class="form-control" th:field="*{titre}" placeholder="Veillez entrer un titre" />
+						<input type="hidden" class="form-control" th:field="*{id}" />
+					</div>
+					<div class=" form-group mb-2">
+						<input type="text" class="form-control" th:field="*{titre}"
+							placeholder="Veillez entrer un titre" />
 					</div>
 
 					<div class=" form-group mb-2">
@@ -22,17 +29,20 @@
 					</div>
 					<div class=" form-group mb-2">
 						<input type="date" class="form-control" th:field="*{date_debut}"
+							th:min="${date_now}"
 							placeholder="Veillez entrer la date de debut" />
 					</div>
 					<div class=" form-group mb-2">
-						<input type="date" class="form-control" th:field="*{date_expiration}"
+						<input type="date" class="form-control"
+							th:field="*{date_expiration}" th:min="${date_now}"
 							placeholder="Veillez entrer la date d'expiration" />
 					</div>
 
 				</div>
 
 				<div class=" form-group">
-					<button type="submit" class="btn btn-success form-control">Ajouter Quiz</button>
+					<button type="submit" class="btn btn-success form-control">Ajouter/Modifier
+						Quiz</button>
 				</div>
 
 			</form>
@@ -42,7 +52,12 @@
 
 	</main>
 
+	<script>
+console.log();
+</script>
 
 	<th:block th:insert="~{_commun :: footer}"></th:block>
+
+
 </body>
 </html>
