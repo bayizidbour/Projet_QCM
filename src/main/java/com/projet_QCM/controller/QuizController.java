@@ -51,9 +51,9 @@ public class QuizController {
 			if(result.hasErrors()) {
 				return "quiz/index";
 			}
-			
+			System.out.println("dehors" + quiz.getId());
 			if(quiz.getId() != null) {
-				System.out.println("update ok");
+				System.out.println("dedans" + quiz.getId());
 				quizService.update(quiz, quiz.getId());
 				ra.addFlashAttribute("success", "Le quiz est modifié avec success");
 			}else {
