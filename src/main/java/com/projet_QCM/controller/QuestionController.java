@@ -28,11 +28,11 @@ public class QuestionController {
 	public final QuestionServiceImpl questionServiceImpl;
 	public final QuizServiceImpl quizServiceImpl;
 
-    @GetMapping("/add")
-    public String addQuestion( Model model) {
+    @GetMapping("/add/{id}")
+    public String addQuestion(@PathVariable Long id, Model model) {
     	model.addAttribute("question", new Question());
     	model.addAttribute("type", TypeQuestion.class);
-    	model.addAttribute("");
+    	model.addAttribute("quizID", id);
     	model.addAttribute("quizs",quizServiceImpl.getAll() );
     	return "question/index";
     }
@@ -51,7 +51,7 @@ public class QuestionController {
         	session.setAttribute("questionObject",questionServiceImpl.getByLibelle(libelle) );
     	}
 	
-    	return "optionQuiz/index";
+    	return "redirect:/admin/question/list";
     }
     
     @GetMapping("/list")

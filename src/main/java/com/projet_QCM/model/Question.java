@@ -1,6 +1,10 @@
 package com.projet_QCM.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,14 +22,20 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_question;
     
-    @Column(unique =true)
+    @Column(nullable = false, length = 50)
+    @Size(min = 2, max=50)
     private String libelle;
 
-    
+    @Column(nullable = false)
     private String typeQuestion;
     
-    private int nbreOption;
-
+    @Min(value = 2)
+    @Column(nullable = false)
+    private int nbreOption=2;
+    
+    @Min(value = 1)
+    @Max(value = 20)
+    @Column(nullable = false)
     private double point;
 
     @ManyToOne

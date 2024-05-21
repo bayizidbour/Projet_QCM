@@ -2,6 +2,7 @@ package com.projet_QCM.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,26 +20,26 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     @NotBlank
+    @Column(length = 25, unique=true)
+    @Size(min = 2, max = 25)
     private String titre;
 
-    @Column
     private int duree;
 
-    @Column
+   
     private LocalDate date_creation= LocalDate.now();
-
-    @Column
+    
+    @NotBlank
     private LocalDate date_debut;
-
-    @Column
+    
+    @NotBlank
     private LocalDate date_expiration;
 
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;*/
+    private User user;
 
     @OneToMany(mappedBy = "quiz")
     private List<Faire> faires;
@@ -59,7 +60,7 @@ public class Quiz {
                 ", date_creation=" + date_creation +
                 ", date_debut=" + date_debut +
                 ", date_expiration=" + date_expiration +
-//                ", user=" + user +
+                ", user=" + user +
                 ", questionList=" + questionList +
                 '}';
     }

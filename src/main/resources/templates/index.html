@@ -17,9 +17,9 @@
 				<p class="quiz" >QuiZ</p>
 				<span><em>Our quiz plateform</em></span>
 			</div>
+		<th:block sec:authorize="!isAuthenticated()">
 			<div class="card mx-1"  style="width: 40%">
 				<div class="card-body p-4">
-
 					<form>
 						<div class="mb-2">
 							
@@ -34,9 +34,9 @@
 					</form>
 					<p>Vous n'avez pas de compte? <a th:href="@{/logon}">Creer un compte</a></p>
 				</div>
-
+				
 			</div>
-
+	</th:block>
 
 
 

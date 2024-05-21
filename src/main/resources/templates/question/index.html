@@ -35,8 +35,8 @@
 					</div>
 					<div class=" form-group mb-2">
 
-						<select class="form-select" th:field="*{quiz}"aria-label="Default select example">
-							<option th:each="quiz : ${quizs}" th:value="${quiz.id}" th:text="${quiz.titre}"></option>							
+						<select class="form-select" th:field="*{quiz}"aria-label="Default select example" hidden="true">
+							<option  th:value="${quizID}" th:text="${quizID}"></option>							
 						</select>
 					</div>
 
