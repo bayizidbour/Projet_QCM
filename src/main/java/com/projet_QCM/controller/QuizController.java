@@ -64,23 +64,7 @@ public class QuizController {
 		}
 		return "redirect:/admin/quiz/list";
 	}
-
-//		// Créer et ajouter un quiz dans la base de donnée
-//				@PostMapping("/admin/quiz/update")
-//				public String updateQuiz(@Valid Quiz quiz, BindingResult result, RedirectAttributes ra) {
-//					
-//					if(result.hasErrors()) {
-//						return "quiz/index";
-//					}
-//					
-//					if(quiz.getId() != 0) {
-//						quizService.update(quiz, quiz.getId());
-//						ra.addFlashAttribute("success", "Le quiz est modifié avec success");
-//					}
-//					return "redirect:/admin/quiz/list";
-//				}
-	// Afficher les quiz à passer
-
+	
 	@GetMapping("/user/quiz/done")
 	public String doneQuiz(Model model) {
 		model.addAttribute("quizs", quizService.getAll());
