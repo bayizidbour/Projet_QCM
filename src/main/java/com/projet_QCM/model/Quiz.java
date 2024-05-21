@@ -36,9 +36,12 @@ public class Quiz {
     private LocalDate date_expiration;
 
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user;*/
+
+    @OneToMany(mappedBy = "quiz")
+    private List<Faire> faires;
 
     @OneToMany(mappedBy = "quiz")
     private List<Question> questionList;
@@ -56,7 +59,7 @@ public class Quiz {
                 ", date_creation=" + date_creation +
                 ", date_debut=" + date_debut +
                 ", date_expiration=" + date_expiration +
-                ", user=" + user +
+//                ", user=" + user +
                 ", questionList=" + questionList +
                 '}';
     }
