@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.projet_QCM.model.Quiz;
+import com.projet_QCM.service.QuestionServiceImpl;
 import com.projet_QCM.service.QuizServiceImpl;
 
 import jakarta.validation.Valid;
@@ -27,12 +28,13 @@ import java.util.List;
 public class QuizController {
 
 	public final QuizServiceImpl quizService;
-
+public final QuestionServiceImpl questionService;
 
     // Afficher la liste des quiz
     
     @GetMapping("/admin/quiz/list")
     public String getAllQuiz(Model model){
+    	model.addAttribute("totalQuestion", questionService.totalQuestion(null));
         model.addAttribute("quizs",quizService.getAll());
         return "quiz/list";
     }

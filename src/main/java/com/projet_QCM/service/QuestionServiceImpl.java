@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.projet_QCM.model.Question;
+import com.projet_QCM.model.Quiz;
 import com.projet_QCM.repository.QuestionRepository;
 
 import lombok.AllArgsConstructor;
@@ -46,8 +47,21 @@ public class QuestionServiceImpl implements  OjectService<Question> {
 		return create(qBD);
 	}
 	
+	
+	
 	public Question getByLibelle(String l) {
-		return this.questionRepository.findByLibelle(l);
+		return this.questionRepository.getBylibelle(l);
 	}
 
+	public Question getByLibeAndQuiz(String libelle, Long idQ) {
+		return questionRepository.findBylibelleAndQuiz(libelle, idQ);
+	}
+	
+	public List<Question> getAllByQuiz(Quiz quiz){
+		return questionRepository.findAllByQuiz(quiz);
+	}
+	
+	public Long totalQuestion(Long id) {
+		return questionRepository.total(id);
+	}
 }

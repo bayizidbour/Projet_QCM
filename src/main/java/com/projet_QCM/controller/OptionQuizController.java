@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,10 +31,20 @@ public class OptionQuizController {
 	
 	
 	
-	@GetMapping("/list")
-	public String option(Model model) {
-		model.addAttribute("options",optionQuizServiceImpl.getAll());
+	@GetMapping("/list/{id}")
+	public String option(@PathVariable Long id, Model model) {
+		
+		Question question = questionServiceImpl.getById(id);
+		
+		model.addAttribute("options",optionQuizServiceImpl.getAllOptionByQuestion(question));
 		return "optionQuiz/list";
+	}
+	
+	@GetMapping("/list")
+	public String option( Model model) {
+		
+		model.addAttribute("options",optionQuizServiceImpl.getAll());
+		return "optionQuiz/listOption";
 	}
 
 	
@@ -68,7 +79,7 @@ public class OptionQuizController {
 			
 		}
 				
-		return "redirect:/";
+		return "redirect:/admin/question/list";
 	}
 
 	@GetMapping("/add")

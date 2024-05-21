@@ -8,27 +8,26 @@
 
 
 		<div class=" card p-4 mt-5" style="width: 60%; margin: auto">
-			<h2 class="">List Questions</h2>
+			<h2 class="">List optionQuiz</h2>
 			<hr />
-			<table class="table">
+			<a class="btn btn-success" th:href="@{/optionQuiz/add}">Add quiz</a>
+			<table class="table mt-3">
 				<thead>
 					<tr>
 						<th scope="col">id</th>
-						<th scope="col">Libelle Question</th>
-						<th scope="col">Type Question</th>
-						<th scope="col">Nombre de point</th>
+						<th scope="col">Text</th>
+						<th scope="col">statut</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="question: ${questions}">
-						<td th:text="${question.id_question}"></td>
-						<td ><a th:href="@{/admin/optionQuiz/list/__${question.id_question}__}" th:text="${question.libelle}"></a></td>
-						<td th:text="${question.typeQuestion}"></td>
-						<td th:text="${question.point}"></td>
+					<tr th:each="option: ${options}">
+						<td th:text="${option.id_option}"></td>
+						<td th:text="${option.text_option}"></td>
+						<td th:text="${option.est_correct}"></td>
 						
 						<td><a href="">Update</a>
-							<a th:href="@{/admin/question/delete/__${question.id_question}__}">Delete</a></td>
+							<a href="">Delete</a></td>
 
 					</tr>
 				</tbody>

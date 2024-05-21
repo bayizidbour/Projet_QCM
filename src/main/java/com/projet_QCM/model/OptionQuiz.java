@@ -28,8 +28,8 @@ public class OptionQuiz {
     @NotNull
     private boolean est_correct;
 
-    @ManyToOne
-    @JoinColumn(name = "question_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "question_id")    
     private Question question;
 
     @OneToMany(mappedBy = "optQuiz")

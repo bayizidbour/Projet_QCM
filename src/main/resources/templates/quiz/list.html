@@ -16,6 +16,7 @@
 					<tr>
 						<th scope="col">id</th>
 						<th scope="col">Titre</th>
+						<th scope="col">Nombre question</th>					
 						<th scope="col">Date debut</th>
 						<th scope="col">Date expiration</th>
 						<th scope="col">Action</th>
@@ -26,7 +27,8 @@
 				<tbody>
 					<tr th:each = "quiz: ${quizs}">
 						<td th:text="${quiz.id}"></td>
-						<td th:text="${quiz.titre}"></td>
+						<td ><a th:text="${quiz.titre}" th:href="@{/admin/question/listQuestion/__${quiz.id}__}"></a>  </td>
+						<td> <p class="text-center" style="height:25px; width:25px; background-color:#71C5CC; border-radius:10px; margin-left: 5px">[[${quiz.nbQuestion}]]</p> </td>
 						<td th:text="${quiz.date_debut}"></td>
 						<td th:text="${quiz.date_expiration}"></td>
 						<td>
@@ -35,7 +37,7 @@
 							<a th:href="@{/quiz/delete/admin/__${quiz.id}__}"><i class="fa-solid fa-trash"></i></a>
 						</td>
 						<td>
-							<a class="btn btn-outline-primary" th:href="@{/admin/question/add/__${quiz.id}__}"><i class="fa-solid fa-pen"></i></a>
+							<a class="btn btn-primary" th:href="@{/admin/question/add/__${quiz.id}__}">Add question</a>
 							
 						</td>
 					</tr>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.projet_QCM.model.OptionQuiz;
+import com.projet_QCM.model.Question;
 import com.projet_QCM.repository.OptionQuizRepository;
 
 import lombok.AllArgsConstructor;
@@ -48,6 +49,10 @@ public class OptionQuizServiceImpl implements OjectService<OptionQuiz> {
 	
 	public Long nbreOption(Long id) {
 		return optionQuizRepository.nbreOption(id);
+	}
+	
+	public List<OptionQuiz> getAllOptionByQuestion(Question question){
+		return optionQuizRepository.findAllByQuestion(question);
 	}
 
 }

@@ -10,7 +10,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
+
+
 
 @Getter
 @Setter
@@ -42,9 +45,19 @@ public class Question {
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
-    @OneToMany(mappedBy = "question")
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<OptionQuiz> optionQuizList;
 
+    public void addoptQuiz(OptionQuiz optQuiz) {
+		if (optionQuizList == null) {
+			optionQuizList = new ArrayList<>();
+		}
+		
+		optQuiz.setQuestion(this);
+		optionQuizList.add(optQuiz);
+	}
+    
 	@Override
 	public String toString() {
 		return "Question = id_question=" + id_question + ", libelle=" + libelle + ", typeQuestion=" + typeQuestion;

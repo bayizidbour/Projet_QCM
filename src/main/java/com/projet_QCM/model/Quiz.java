@@ -27,13 +27,15 @@ public class Quiz {
 
     private int duree;
 
-   
+    private Long nbQuestion;
+    
     private LocalDate date_creation= LocalDate.now();
     
-    @NotBlank
+  
+  
     private LocalDate date_debut;
     
-    @NotBlank
+ 
     private LocalDate date_expiration;
 
 
@@ -62,6 +64,7 @@ public class Quiz {
                 ", date_expiration=" + date_expiration +
                 ", user=" + user +
                 ", questionList=" + questionList +
+                ", nbQuestion=" + nbQuestion +
                 '}';
     }
 }

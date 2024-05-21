@@ -52,6 +52,21 @@ public class QuizServiceImpl  implements OjectService<Quiz>{
             quizBD.setDate_expiration(quizUp.getDate_expiration());
         return create(quizBD);
     }
+    
+   
+    public Quiz updateQ(Quiz quizUp,Long id) {
+        Quiz quizBD=getById(id);
+        
+            quizBD.setId(quizUp.getId());
+            quizBD.setTitre(quizUp.getTitre());
+            quizBD.setDuree(quizUp.getDuree());
+           // quizBD.setUser(quizUp.getUser());
+            quizBD.setDate_debut(quizUp.getDate_debut());
+            quizBD.setDate_creation(quizUp.getDate_creation());
+            quizBD.setDate_expiration(quizUp.getDate_expiration());
+            quizBD.setNbQuestion(quizUp.getNbQuestion());
+        return create(quizBD);
+    }
 
 
     public User findUserByLogin(String login){
@@ -61,4 +76,9 @@ public class QuizServiceImpl  implements OjectService<Quiz>{
     public double calculMoyenneByIdUser(int id){
         return this.faireRepository.calculMoyenneByIdUser(id);
     }
+    
+    public Quiz updateQuiz(Long nbr, Long id) {
+    return this.quizRepository.updateQuiz(nbr, id);
+    }
+
 }

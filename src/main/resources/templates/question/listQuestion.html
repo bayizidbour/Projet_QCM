@@ -8,7 +8,7 @@
 
 
 		<div class=" card p-4 mt-5" style="width: 60%; margin: auto">
-			<h2 class="">List Questions</h2>
+			<h4 class=""><em><span class="text-danger" th:text="${nomQuiz}"></span></em></h4>
 			<hr />
 			<table class="table">
 				<thead>
@@ -27,8 +27,11 @@
 						<td th:text="${question.typeQuestion}"></td>
 						<td th:text="${question.point}"></td>
 						
-						<td><a href="">Update</a>
-							<a th:href="@{/admin/question/delete/__${question.id_question}__}">Delete</a></td>
+						<td>
+						<a th:href="@{/admin/question/update/__${question.id_question}__}"><i class="fa-solid fa-pen"></i></a>
+						-
+						<a th:href="@{/admin/question/delete/__${question.id_question}__}"><i class="fa-solid fa-trash"></i></a>
+						</td>
 
 					</tr>
 				</tbody>

@@ -9,11 +9,13 @@
 
 		<div class=" card p-4 mt-5" style="width: 30%; margin: auto">
 			<h2 class="">Add question</h2>
+			<div th:if="${warning}" class="alert alert-danger text-center h6"> La question existe deja pour ce quiz, veuillez changer de question</div>
 			<form  th:action="@{/admin/question}" method="post" th:object="${question}">
 
 				<div class="">
 					<div class=" form-group mb-2">
 						<input type="text" class="form-control" th:field="*{libelle}" placeholder="Veillez entrer libelle" />
+					    <div th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="alert alert-danger p-1 mt-1 em"></div>
 					</div>
 
 					<div class=" form-group mb-2">
