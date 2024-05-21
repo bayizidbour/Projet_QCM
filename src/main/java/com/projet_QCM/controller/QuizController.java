@@ -96,11 +96,6 @@ public class QuizController {
 		}
 		return "redirect:/admin/quiz/list";
 	}
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 8121078fde2457b2ba592a2930184e6cc696c6c8
 	@GetMapping("/user/quiz/done")
 	public String doneQuiz(Model model) {
 		model.addAttribute("quizs", quizService.getAll());
