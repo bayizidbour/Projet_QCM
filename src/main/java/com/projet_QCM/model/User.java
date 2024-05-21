@@ -32,7 +32,8 @@ public class User {
     
     @Enumerated(EnumType.STRING)
     @Column( length = 20 )
-    private Statut         statut;
+
+    private Statut  statut = Statut.USER; //ELEVE ?????
     
     @Column( length = 8, unique= true, nullable = false)
     private String         login;
@@ -44,7 +45,7 @@ public class User {
     private List<Moyenne> moyenneList;
 
     @OneToMany(mappedBy = "user")
-    private List<Quiz> quizList;
+    private List<Faire> faires;
 
     @Override
     public String toString() {
