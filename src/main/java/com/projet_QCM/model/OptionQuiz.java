@@ -31,14 +31,14 @@ public class OptionQuiz {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id")    
     private Question question;
-
-    @OneToMany(mappedBy = "optQuiz")
-    private List<Reponse> reponseList;
+//
+//    @OneToMany(mappedBy = "optQuiz")
+//    private List<Reponse> reponseList;
 
 	@Override
 	public String toString() {
 		return "OptionQuiz [id_option=" + id_option + ", text_option=" + text_option + ", est_correct=" + est_correct
-				+ ", question=" + question + ", reponseList=" + reponseList + "]";
+				+ ", question=" + question  + "]";
 	}
     
     

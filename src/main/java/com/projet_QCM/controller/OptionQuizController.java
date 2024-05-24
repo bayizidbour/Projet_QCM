@@ -49,21 +49,39 @@ public class OptionQuizController {
 
 	
 	@PostMapping
-	public String inser(@Valid OptionQuiz option, BindingResult result, Model model, @RequestParam("nbreOpt") int nbreOpt, HttpSession session ) {
+	public String inser( Model model,
+			@RequestParam("nbreOpt") int nbreOpt,
+			@RequestParam("id_question") int id_question,
+			@RequestParam("reponse") String [] reponse,
+			@RequestParam("trueFalse") int [] trueFalse,
+			HttpSession session ) {
 		
-		Question question=questionServiceImpl.getById(option.getQuestion().getId_question());
 		
-		if (result.hasErrors()) {
+		
+//		if (result.hasErrors()) {
+//			
+//			return "optionQuiz/index";
+//		}
+		 
+		
+		for (int i = 0; i< reponse.length; i++) {
+			boolean bool = false;
 			
-			return "optionQuiz/index";
+			for(int t : trueFalse) {
+				if(t == (i+1)) {
+					bool = true;
+					break;
+				}
+			}
+			
+			OptionQuiz optionQuiz = new OptionQuiz(null, reponse[i], bool, questionServiceImpl.getById((long) id_question));
+			
+			optionQuizServiceImpl.create(optionQuiz);
 		}
+	
 		
-		
-		Long idQ=question.getId_question();
-		
-		System.out.println("id question "+idQ);
-		System.out.println("Longueur tab option quiz "+optionQuizServiceImpl.nbreOption(idQ));
-				
+/*
+ 
 		optionQuizServiceImpl.create(option);
 		
 		if(optionQuizServiceImpl.nbreOption(idQ)!=nbreOpt) {
@@ -78,7 +96,7 @@ public class OptionQuizController {
 			}
 			
 		}
-				
+		*/		
 		return "redirect:/admin/question/list";
 	}
 

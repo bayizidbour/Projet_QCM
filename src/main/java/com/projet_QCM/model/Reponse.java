@@ -20,15 +20,15 @@ public class Reponse {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_reponse;
 	
-	@ManyToOne
-	@JoinColumn(name = "optQuiz_id")
-	private OptionQuiz optQuiz;
+//	@ManyToOne
+//	@JoinColumn(name = "optQuiz_id")
+//	private OptionQuiz optQuiz;
 
 	@Override
 	public String toString() {
 		return "Reponse{" +
 				"id_reponse=" + id_reponse +
-				", opt_Quiz=" + optQuiz +
+				", opt_Quiz="  +
 				'}';
 	}
 }

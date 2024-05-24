@@ -8,38 +8,46 @@
 
 
 		<div class=" card p-4 mt-5" style="width: 30%; margin: auto">
-			<h2 class="">Add Optionquestion</h2>
-			<form th:action="@{/admin/optionQuiz}"  method="post" th:object="${option}">
+			<h2 class="">Add Réponses</h2>
 
-				<div class="">
-					<div class=" form-group mb-2">
-						<input type="text" class="form-control" th:field="*{text_option}"
-							placeholder="Veillez entrer un titre" />
-					</div>
+			<form th:action="@{/admin/optionQuiz}" method="post"
+				>
 
-					<div class="form-check form-switch">
-						<input class="form-check-input" type="checkbox" th:value="${est_correct}" th:field="*{est_correct}" role="switch" id="flexSwitchCheckChecked" checked>
-						 <label class="form-check-label" for="flexSwitchCheckChecked">Est correct?</label>
-					</div>
-					<div class=" form-group mb-2">
+				<div class=" form-group mb-2">
+							<input type="hidden" class="form-control" name ="id_question" th:value="${session.questionObject.id_question}"
+								placeholder="Veillez entrer une reponse" />
+				</div>
+				
+				<div class=" form-group mb-2">
+							<input type="hidden" class="form-control" name ="nbreOpt" th:value="${session.questionObject.nbreOption}"
+								placeholder="Veillez entrer une reponse" />
+				</div>
+				<div th:each="tab, status : ${tabOption}" >
+					
+					<div class="">
+						
+						<div class=" form-group mb-2">
+							<input type="text" class="form-control" name ="reponse"
+								placeholder="Veillez entrer une reponse" />
+						</div>
 
-						<select class="form-select" th:field="*{question}"aria-label="Default select example" hidden="true">
-							<option th:value="${session.questionObject.id_question}" th:text="${session.questionObject.libelle}"></option>							
-						</select>
-					</div>
-
-					<div class="form-group mb-2">
-						<select class="form-select" name="nbreOpt" aria-label="Default select example" hidden="true">
-							<option  th:value="${session.questionObject.nbreOption}" th:text="${session.questionObject.nbreOption}"></option>							
-						</select>
+						<div class="form-check form-switch">
+							<input class="form-check-input" type="checkbox"
+								th:value="${status.count}" name="trueFalse" 
+								role="switch" id="flexSwitchCheckChecked" > <label
+								class="form-check-label" for="flexSwitchCheckChecked">Est
+								correct?</label>
+						</div>
+						
 					</div>
 				</div>
-
 				<div class=" form-group">
-					<button type="submit" class="btn btn-success form-control">Ajouter Option</button>
+					<button type="submit" class="btn btn-success form-control">Ajouter
+						Réponses</button>
 				</div>
 
 			</form>
+
 		</div>
 
 

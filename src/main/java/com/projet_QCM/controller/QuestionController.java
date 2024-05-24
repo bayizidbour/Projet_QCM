@@ -1,6 +1,9 @@
 package com.projet_QCM.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +39,6 @@ public class QuestionController {
 		model.addAttribute("question", new Question());
 		model.addAttribute("type", TypeQuestion.class);
 		model.addAttribute("quizID", id);
-		model.addAttribute("quizs", quizServiceImpl.getAll());
 		return "question/index";
 	}
 
@@ -50,7 +52,7 @@ public class QuestionController {
 			model.addAttribute("type", TypeQuestion.class);
 			model.addAttribute("warning", "true");
 			model.addAttribute("quizID", idQ);
-			model.addAttribute("quizs", quizServiceImpl.getAll());
+//			model.addAttribute("quizs", quizServiceImpl.getAll());
 			return "question/index";
 		}
 		
@@ -60,8 +62,17 @@ public class QuestionController {
 		
 		questionServiceImpl.create(question);
 
+		/*int [] tab = new int[question.getNbreOption()];
+		for(int i = 0; i < question.getNbreOption(); i++) {
+			tab[i] = i;
+		}
+		*/
+		OptionQuiz tab[] = new OptionQuiz[question.getNbreOption()];
+		
+		
 		if (question != null) {
 
+			model.addAttribute("tabOption", tab);
 			model.addAttribute("option", new OptionQuiz());
 			session.setAttribute("questionObject", questionServiceImpl.getByLibelle(libelle));
 		}
