@@ -97,7 +97,7 @@ public class OptionQuizController {
 			
 		}
 		*/		
-		return "redirect:/admin/question/list";
+		return "redirect:/admin/optionQuiz/list";
 	}
 
 	@GetMapping("/add")
