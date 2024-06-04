@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+<th:block th:insert="~{_commun :: head}"></th:block>
+<body>
+	<th:block th:insert="~{_commun :: header}"></th:block>
+	<main class="container-fluid">
+	
+		<h3> Titre des quiz</h3>
+		<div th:text="${quiz.titre}"></div>
+		
+		<h3> Liste des questions</h3>
+		<div th:each=" question: ${quiz.questionList}">
+		
+		<div th:text="${question.libelle}">
+				
+		</div>
+		<h4> Liste des réponses</h4>
+		<div th:each="rep : ${question.optionQuizList}">
+		
+		
+		<div th:text="${rep.text_option}"></div>
+		
+		</div>
+		
+		</div>
+
+
+	</main>
+	<th:block th:insert="~{_commun :: footer}"></th:block>
+
+
+</body>
+</html>
