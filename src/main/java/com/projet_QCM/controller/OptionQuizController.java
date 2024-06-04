@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projet_QCM.model.OptionQuiz;
 import com.projet_QCM.model.Question;
+import com.projet_QCM.model.Quiz;
 import com.projet_QCM.service.OptionQuizServiceImpl;
 import com.projet_QCM.service.QuestionServiceImpl;
 
@@ -39,6 +40,8 @@ public class OptionQuizController {
 		model.addAttribute("options",optionQuizServiceImpl.getAllOptionByQuestion(question));
 		return "optionQuiz/list";
 	}
+	
+	
 	
 	@GetMapping("/list")
 	public String option( Model model) {
@@ -77,6 +80,25 @@ public class OptionQuizController {
 			OptionQuiz optionQuiz = new OptionQuiz(null, reponse[i], bool, questionServiceImpl.getById((long) id_question));
 			
 			optionQuizServiceImpl.create(optionQuiz);
+			
+			//Recupérer Quiz dans question
+			Question question = questionServiceImpl.getById((long) id_question);
+			Quiz quiz = question.getQuiz();
+			
+			System.out.print(quiz);
+			System.out.print(quiz.getQuestionList());
+			
+			for (Question q : quiz.getQuestionList() ) {
+				System.out.println(q.getLibelle());
+				for(OptionQuiz opt : q.getOptionQuizList()) {
+					System.out.println(opt.getText_option());
+				}
+			}
+			
+			model.addAttribute("quiz", question.getQuiz());
+			
+			return "quiz/quiz";
+			
 		}
 	
 		
@@ -97,7 +119,7 @@ public class OptionQuizController {
 			
 		}
 		*/		
-		return "redirect:/admin/optionQuiz/list";
+		return "redirect:/admin/quiz";
 	}
 
 	@GetMapping("/add")

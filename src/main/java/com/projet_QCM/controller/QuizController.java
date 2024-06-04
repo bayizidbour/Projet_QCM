@@ -45,6 +45,12 @@ public final QuestionServiceImpl questionService;
         return "eleve/examen";
     }
 
+    @GetMapping("/admin/quiz")
+    public String quiz(Model model) {
+    	
+    	return "quiz/quiz";
+    }
+    
     // Afficher note QUiz
    
     @GetMapping("/user/quiz")
