@@ -72,6 +72,14 @@ font-size: 30px;
 
 }
 
+.add{
+
+margin:auto;
+width: 200px;
+
+}
+
+
 
 </style>
 
@@ -99,7 +107,7 @@ font-size: 30px;
 					<th:block sec:authorize="hasRole('ROLE_ADMIN')">
 
 					<li class="nav-item">
-						<div class="dropdown mx-1">
+						<div class="dropdown mx-1" hidden = true>
 							<button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Gestion questions</button>
 							<ul class="dropdown-menu">
