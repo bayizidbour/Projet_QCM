@@ -80,5 +80,9 @@ public class QuizServiceImpl  implements OjectService<Quiz>{
     public Quiz updateQuiz(Long nbr, Long id) {
     return this.quizRepository.updateQuiz(nbr, id);
     }
+    
+    public Quiz getTitreQuiz(String titre) {
+    	return this.quizRepository.findByTitre(titre);
+    }
 
 }

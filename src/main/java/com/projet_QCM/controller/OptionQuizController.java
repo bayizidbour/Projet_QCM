@@ -84,20 +84,21 @@ public class OptionQuizController {
 			//Recupérer Quiz dans question
 			Question question = questionServiceImpl.getById((long) id_question);
 			Quiz quiz = question.getQuiz();
+			Long idQ = quiz.getId();
 			
-			System.out.print(quiz);
-			System.out.print(quiz.getQuestionList());
-			
-			for (Question q : quiz.getQuestionList() ) {
-				System.out.println(q.getLibelle());
-				for(OptionQuiz opt : q.getOptionQuizList()) {
-					System.out.println(opt.getText_option());
-				}
-			}
+//			System.out.print(quiz);
+//			System.out.print(quiz.getQuestionList());
+//			
+//			for (Question q : quiz.getQuestionList() ) {
+//				System.out.println(q.getLibelle());
+//				for(OptionQuiz opt : q.getOptionQuizList()) {
+//					System.out.println(opt.getText_option());
+//				}
+//			}
 			
 			model.addAttribute("quiz", question.getQuiz());
 			
-			return "quiz/quiz";
+			return "redirect:/admin/question/listQuestion/"+idQ;
 			
 		}
 	

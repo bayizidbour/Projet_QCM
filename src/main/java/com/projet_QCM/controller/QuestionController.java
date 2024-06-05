@@ -91,7 +91,7 @@ public class QuestionController {
 		Quiz quiz = quizServiceImpl.getById(id);
 
 		model.addAttribute("questions", questionServiceImpl.getAllByQuiz(quiz));
-		model.addAttribute("nomQuiz", quiz.getTitre());
+		model.addAttribute("quiz", quiz);
 		return "question/listQuestion";
 	}
 

@@ -1,7 +1,7 @@
 package com.projet_QCM.controller;
 
 import java.time.LocalDate;
-
+import java.time.format.DateTimeFormatter;
 
 import com.projet_QCM.model.Faire;
 import com.projet_QCM.model.User;
@@ -87,18 +87,30 @@ public final QuestionServiceImpl questionService;
 
 	// Créer et ajouter un quiz dans la base de donnée
 	@PostMapping("/admin/quiz/inserer")
-	public String createQuiz(@Valid Quiz quiz, BindingResult result, RedirectAttributes ra) {
+	public String createQuiz(@Valid Quiz quiz, Model model, BindingResult result, RedirectAttributes ra) {
 
+		
+		
 		if (result.hasErrors()) {
 			return "quiz/index";
 		}
+		
+		if(quizService.getTitreQuiz(quiz.getTitre()) != null) {
+			model.addAttribute("quiz", quiz );
+			model.addAttribute("warning", "true");
+			return "quiz/index";
+		}
+		
 		System.out.println("dehors" + quiz.getId());
 		if (quiz.getId() != null) {
 			System.out.println("dedans" + quiz.getId());
 			quizService.update(quiz, quiz.getId());
 			ra.addFlashAttribute("success", "Le quiz est modifié avec success");
 		} else {
+			
 			System.out.println("update Non ok");
+			
+			
 			quizService.create(quiz);
 			ra.addFlashAttribute("success", "Le quiz est ajouté avec success");
 		}
